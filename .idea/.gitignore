@@ -1,0 +1,9 @@
+# Default ignored files
+/workspace.xml
+/codeStyles/codeStyleConfig.xml
+/codeStyles/Project.xml
+/libraries/KotlinJavaRuntime.xml
+/kotlinc.xml
+/misc.xml
+/modules.xml
+/vcs.xml
