@@ -5,17 +5,8 @@ import javax.swing.JPanel
 fun main() {
     val cube = createUnitCube()
 
-    val panel = UpdatableJPanel.createTriangleDrawingUpdatableJPanel(cube.triangles)
-    val frame = createFrame(panel)
+    val frame= JFrame3D.createTriangleDrawingJFrame(cube.triangles)
     frame.isVisible = true
-}
-
-private fun createFrame(p: JPanel): JFrame {
-    val frame = JFrame()
-    frame.minimumSize = Dimension(500, 500)
-    frame.defaultCloseOperation = JFrame.EXIT_ON_CLOSE
-    frame.add(p)
-    return frame
 }
 
 private fun createUnitCube(): Mesh {
