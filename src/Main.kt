@@ -5,8 +5,8 @@ import javax.swing.JPanel
 fun main() {
     val cube = createUnitCube()
 
-    val frame= JFrame3D.createTriangleDrawingJFrame(cube.triangles)
-    frame.isVisible = true
+    val frame1= JFrame3D.createTriangleDrawingJFrame(cube, listOf( RotationEffect.rotateX()))
+    frame1.isVisible = true
 }
 
 private fun createUnitCube(): Mesh {
