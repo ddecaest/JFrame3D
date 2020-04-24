@@ -9,9 +9,9 @@ import java.awt.Color
 import java.awt.Graphics
 import kotlin.math.sqrt
 
-internal class MeshBasedDrawFunctionBuilder(var widthScreen:Int, var heightScreen:Int) {
+internal class MeshBasedDrawFunctionBuilder(private val widthScreen:Int, private val heightScreen:Int) {
 
-    var aspectRatio = (heightScreen/widthScreen).toFloat()
+    private val aspectRatio = (heightScreen/widthScreen).toFloat()
     var effects = mutableListOf<DrawEffect>()
     var drawMode = DrawMode.FILL
     var mesh = Mesh(emptyList())
