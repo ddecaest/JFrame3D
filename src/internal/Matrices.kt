@@ -1,8 +1,11 @@
+package internal
+
+import external.Vector3D
 import kotlin.math.cos
 import kotlin.math.sin
 import kotlin.math.tan
 
-object RotationMatrixFactory {
+internal object RotationMatrixFactory {
 
     fun createXRotationMatrix(counter: Float): RotationMatrix {
         val cosine = cos(counter * 0.5f)
@@ -65,7 +68,7 @@ object RotationMatrixFactory {
     }
 }
 
-object ProjectionMatrixFactory {
+internal object ProjectionMatrixFactory {
 
     fun createProjectionMatrix(fieldOfViewInDegrees: Double, aspectRatio: Float): ProjectionMatrix {
         val projectionMatrix: Array<FloatArray> = arrayOf(
@@ -92,3 +95,18 @@ object ProjectionMatrixFactory {
 
 typealias ProjectionMatrix = Array<FloatArray>
 typealias RotationMatrix = Array<FloatArray>
+
+fun multiplyVectorWithMatrix(vector: Vector3D, matrix: Array<FloatArray>): Vector3D {
+    var x = vector.x * matrix[0][0] + vector.y * matrix[1][0] + vector.z * matrix[2][0] + matrix[3][0]
+    var y = vector.x * matrix[0][1] + vector.y * matrix[1][1] + vector.z * matrix[2][1] + matrix[3][1]
+    var z = vector.x * matrix[0][2] + vector.y * matrix[1][2] + vector.z * matrix[2][2] + matrix[3][2]
+
+    val fourthDimension = vector.x * matrix[0][3] + vector.y * matrix[1][3] + vector.z * matrix[2][3] + matrix[3][3]
+    if (fourthDimension != 0.0f) {
+        x /= fourthDimension
+        y /= fourthDimension
+        z /= fourthDimension
+    }
+
+    return Vector3D(x, y, z)
+}
